@@ -1,0 +1,40 @@
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+
+# Data (large CSVs — regenerable via fetch_data.py)
+data/raw/*.csv
+data/processed/*.csv
+
+# Models (large binary files)
+models/*.pkl
+models/*.keras
+models/*.h5
+
+# Reports
+reports/*.png
+reports/*.csv
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml
