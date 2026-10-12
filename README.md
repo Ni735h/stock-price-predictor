@@ -44,17 +44,6 @@ python -m src.train_model
 streamlit run app.py
 
 
-## 📁 Structure
-
-```
-stock-price-predictor/
-├── data/           # raw & processed CSVs
-├── models/         # trained models
-├── src/            # pipeline scripts
-├── app.py          # Streamlit app
-└── requirements.txt
-```
-
 ## 🧠 Key Learnings
 
 1. **Feature scaling matters** — unscaled Volume destroyed Linear Regression (R² = -3058)
