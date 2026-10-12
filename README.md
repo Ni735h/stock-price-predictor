@@ -42,3 +42,34 @@ python -m src.train_model
 
 # 4. Launch app
 streamlit run app.py
+
+
+## 📁 Structure
+
+```
+stock-price-predictor/
+├── data/           # raw & processed CSVs
+├── models/         # trained models
+├── src/            # pipeline scripts
+├── app.py          # Streamlit app
+└── requirements.txt
+```
+
+## 🧠 Key Learnings
+
+1. **Feature scaling matters** — unscaled Volume destroyed Linear Regression (R² = -3058)
+2. **Regime shift is real** — models trained on bullish data fail on bearish test sets
+3. **Predict returns, not prices** — dropped RMSE from ₹76 → ₹0.33
+4. **Always compare to naive baseline** — the only honest test in financial ML
+
+## ⚠️ Disclaimer
+
+Educational project only. Not financial advice.
+
+## 🙏 Acknowledgements
+
+Built as part of a learning journey with **Codec Technologies**.
+
+## 📬 Connect
+
+[LinkedIn](https://linkedin.com/in/nitesh-kanojiya-89622636b) 
