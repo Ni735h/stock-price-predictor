@@ -158,7 +158,7 @@ else:
     st.info(f"➡️ **Neutral signal** — Model expects {change_pct:+.2f}% (no strong trend)")
 
 st.caption(
-    "⚠️ This is a student ML project. Predictions are NOT financial advice. "
+    "Predictions are NOT financial advice. "
     "Stock markets are inherently unpredictable."
 )
 
