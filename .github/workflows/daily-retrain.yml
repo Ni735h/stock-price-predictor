@@ -1,0 +1,47 @@
+name: Daily Model Retrain
+
+on:
+  schedule:
+    - cron: '0 12 * * 0'   # Every Sunday 5:30 PM IST
+  workflow_dispatch:
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: 📦 Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install yfinance pandas numpy scikit-learn joblib tensorflow
+
+      - name: 📊 Fetch fresh data
+        run: python -m src.fetch_data
+
+      - name: 🧹 Preprocess
+        run: python -m src.preprocess
+
+      - name: ⚙️ Feature engineering
+        run: python -m src.features
+
+      - name: 🚀 Train models
+        run: python -m src.train_model
+
+      - name: 💾 Commit updated models
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add models/ reports/
+          git diff --staged --quiet || git commit -m "🤖 Auto-retrain: $(date +'%Y-%m-%d')"
+          git push
